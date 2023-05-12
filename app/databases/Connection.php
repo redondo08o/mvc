@@ -4,7 +4,7 @@ class Connection{
     private $connection;
     private $user = 'root';
     private $password = '';
-    private $host = 'mysql:host=localhost;dbname=bd_sena';
+    private $host = 'mysql:host=localhost;dbname=bd_prueba';
 
     private $option =[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 

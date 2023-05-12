@@ -1,21 +1,27 @@
 <?php
-
+require_once __DIR__.'/../models/UserModel.php';
 
 class HomeController extends Contoller
 {
 
     public function index()
     {
-        $o = new Connection();
-        $c = $o->getConnection()->prepare('show tables');
-        $c->execute();
-        $tables = $c->fetchAll();
-        $this->view->table = $tables;
         $this->view->Content('home');
     }
     public function index2()
     {
-        echo 'hola 2 como estas caremonda';
+        extract($_POST);
+        $param['nombre'] = $nombre;
+        $param['apellido'] = $apellido;
+        $param['cc'] = $cc;
+        $res = UserModel::store($param);
+
+        if($res > 0){
+            echo json_encode(array(
+                'message' => 'registrado correctamente',
+                'icon'    => 'success'
+            ));
+        }
     }
     public function index3()
     {
